@@ -86,7 +86,7 @@ function set_autoexpand() {
 
     if [[ -f "$mountdir/etc/rc.local" ]] && [[ "$(md5sum "$mountdir/etc/rc.local" | cut -d ' ' -f 1)" != "1c579c7d5b4292fd948399b6ece39009" ]]; then
       echo "Creating new /etc/rc.local"
-    if [ -f "$mountdir/etc/rc.local" ]; then
+    if [ -f "$mountdir/etc/rc.local" -a ! -f "$mountdir/etc/rc.local.bak"]; then
         mv "$mountdir/etc/rc.local" "$mountdir/etc/rc.local.bak"
     fi
 
